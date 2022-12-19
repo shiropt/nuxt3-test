@@ -1,6 +1,7 @@
 <script setup lang="ts">
 type Todo = { userId: number; id: number; title: string; completed: boolean };
 const { data, error } = await useFetch<Todo[]>(() => "https://jsonplaceholder.typicode.com/todos");
+const click = () => console.log("click!!");
 </script>
 <template>
   <div>
@@ -9,5 +10,6 @@ const { data, error } = await useFetch<Todo[]>(() => "https://jsonplaceholder.ty
     <div v-else v-for="todo in data" :key="todo.id">
       <p>{{ todo.title }}</p>
     </div>
+    <ButtonPrimary @click="click">click</ButtonPrimary>
   </div>
 </template>
