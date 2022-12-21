@@ -1,6 +1,4 @@
 <script setup lang="ts">
-// type Todo = { userId: number; id: number; title: string; completed: boolean };
-// const { data, error } = await useFetch<Todo[]>(() => "https://jsonplaceholder.typicode.com/todos");
 const Edit = resolveComponent("TabContentEdit");
 const Home = resolveComponent("TabContentHome");
 const Detail = resolveComponent("TabContentDetail");
@@ -21,17 +19,14 @@ const selectTab = (value: "HOME" | "DETAIL" | "EDIT") => {
   <div>
     <div class="tab-wrap">
       <div class="tab-head-wrap">
-        <div @click="selectTab('HOME')">Hollllme</div>
+        <div @click="selectTab('HOME')">Home</div>
         <div @click="selectTab('DETAIL')">Detail</div>
         <div @click="selectTab('EDIT')">Edit</div>
       </div>
-      <component :is="currentTab" />
+      <keep-alive>
+        <component :is="currentTab" />
+      </keep-alive>
     </div>
-    <!-- <div v-if="error">error</div>
-    <div v-else-if="!data">loading...</div>
-    <div v-else v-for="todo in data" :key="todo.id">
-      <p>{{ todo.title }}</p>
-    </div> -->
   </div>
 </template>
 <style>
